@@ -8,11 +8,61 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <ion-grid>
+    <ion-row wrap padding>
+      <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <!---Logo-->
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+        <ion-row>
+          <ion-col ion-col text-center no-padding col-12 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+            <h1 class="text-col">Welcome to ionic project</h1>
+          </ion-col>
+        </ion-row>
+        <!---Input field username-->
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+        <!-- Email address -->
+        <ion-item color="accent">
+          <ion-label color="secondary" floating>Name</ion-label>
+          <ion-input required type="text" name="name" [(ngModel)]="name"></ion-input>
+        </ion-item>
+
+        <!---Input field password-->
+        <ion-item color="accent">
+          <ion-label color="secondary" floating>Email</ion-label>
+          <ion-input required type="text" [(ngModel)]="email" name="email"></ion-input>
+        </ion-item>
+        <!---Input field password-->
+        <ion-item color="accent">
+          <ion-label color="secondary" floating>Hobby</ion-label>
+          <ion-input required type="text" [(ngModel)]="hobby" name="hobby"></ion-input>
+        </ion-item>
+
+        <!---Register button-->
+        <button ion-button float-right default-button (click)="addProduct()">Add product</button>
+
+        <button ion-button float-right default-button (click)="getProducts()">Get Products</button>
+        <button ion-button (click) = "updateProduct(item)">Update Product</button>
+
+      </ion-col>
+      <!---Share Section-->
+
+      <!---End Share Section-->
+    </ion-row>
+
+
+    <ul *ngFor="let item of product">
+      <li>
+        {{item.name}}
+        {{item.email}}
+        {{item.hobby}}
+      </li>
+
+      <button ion-button (click) = "deleteProduct(item)">Delete</button>
+      <button ion-button (click) = "onClick(item)">Update</button>
+
+
+
+    </ul>
+  </ion-grid>
+
 </ion-content>
